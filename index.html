@@ -86,7 +86,7 @@
     }
     .content p {
       margin-top: 20px;
-      font-size: 1rem; /* Adjusted narration text size */
+      font-size: 1rem;
       line-height: 1.5;
       text-align: center;
     }
@@ -100,6 +100,16 @@
       font-size: 0.8rem;
       color: #555;
       opacity: 0.7;
+    }
+    /* Dynamic page counter styling */
+    .page-counter {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      color: #a4243b;
+      opacity: 0.9;
     }
   </style>
 </head>
@@ -126,6 +136,8 @@
     </div>
     <!-- Click hint -->
     <div class="hint">Click to continue</div>
+    <!-- Dynamic page counter -->
+    <div class="page-counter" id="page-counter">1 / 5</div>
   </div>
 
   <script>
@@ -157,6 +169,12 @@
     const panel = document.getElementById("panel");
     const sceneImage = document.getElementById("scene-img");
     const sceneMessage = document.getElementById("scene-msg");
+    const pageCounter = document.getElementById("page-counter");
+
+    // Function to update the page counter
+    function updatePageCounter() {
+      pageCounter.textContent = `PAGE: ${currentScene + 1} / ${scenes.length}`;
+    }
 
     // Function to trigger the fade-out/fade-in animation and update the scene.
     function nextScene() {
@@ -168,10 +186,14 @@
         currentScene = (currentScene + 1) % scenes.length;
         sceneImage.src = scenes[currentScene].image;
         sceneMessage.textContent = scenes[currentScene].message;
+        updatePageCounter();
         // Fade the panel back in.
         panel.style.opacity = 1;
       }, 500);
     }
+
+    // Initialize the counter on load.
+    updatePageCounter();
 
     // Advance the scene on click.
     panel.addEventListener("click", nextScene);
