@@ -142,7 +142,7 @@ The legend of the Cryptic Gems calls him onward.
     <!-- Click hint -->
     <div class="hint">Click to continue</div>
     <!-- Dynamic page counter -->
-    <div class="page-counter" id="page-counter">1 / 16</div>
+    <div class="page-counter" id="page-counter">PAGE: 1 / 16</div>
   </div>
 
   <script>
@@ -214,13 +214,20 @@ The legend of the Cryptic Gems calls him onward.
       }
     ];
 
+    // Preload all scene images.
+    const preloadedImages = [];
+    scenes.forEach((scene, index) => {
+      preloadedImages[index] = new Image();
+      preloadedImages[index].src = scene.image;
+    });
+
     let currentScene = 0;
     const panel = document.getElementById("panel");
     const sceneImage = document.getElementById("scene-img");
     const sceneMessage = document.getElementById("scene-msg");
     const pageCounter = document.getElementById("page-counter");
 
-    // Function to update the page counter
+    // Function to update the page counter.
     function updatePageCounter() {
       pageCounter.textContent = `PAGE: ${currentScene + 1} / ${scenes.length}`;
     }
