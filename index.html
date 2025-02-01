@@ -89,6 +89,7 @@
       font-size: 1rem;
       line-height: 1.5;
       text-align: center;
+      white-space: pre-line; /* Ensure \n line breaks are rendered */
     }
     /* Hint styling */
     .hint {
@@ -130,38 +131,86 @@
     <!-- Main content container centers the image and adventure notes vertically -->
     <div class="main-content">
       <div class="content" id="content">
-        <img id="scene-img" src="https://picsum.photos/seed/adventurer/512/512" alt="Medieval Adventurer">
-        <p id="scene-msg">A brave adventurer sets out on his quest, guided by legends of untold riches.</p>
+        <img id="scene-img" src="https://picsum.photos/seed/adventurer1/512/512" alt="Medieval Adventurer">
+        <p id="scene-msg">
+At first light, Sir Alaric leaves his quiet village,
+his heart alight with hope and dreams of adventure.
+The legend of the Cryptic Gems calls him onward.
+        </p>
       </div>
     </div>
     <!-- Click hint -->
     <div class="hint">Click to continue</div>
     <!-- Dynamic page counter -->
-    <div class="page-counter" id="page-counter">1 / 5</div>
+    <div class="page-counter" id="page-counter">1 / 16</div>
   </div>
 
   <script>
-    // Define the scenes for the medieval adventure narrative.
+    // Define the extended scenes for the medieval adventure narrative.
     const scenes = [
       {
-        image: "https://picsum.photos/seed/adventurer/512/512",
-        message: "A brave adventurer sets out on his quest, guided by legends of untold riches."
+        image: "https://picsum.photos/seed/adventurer1/512/512",
+        message: "At first light, Sir Alaric leaves his quiet village,\nhis heart alight with hope and dreams of adventure.\nThe legend of the Cryptic Gems calls him onward."
       },
       {
-        image: "https://picsum.photos/seed/cave/512/512",
-        message: "Through treacherous woods, he arrives at the foreboding entrance of an ancient cave."
+        image: "https://picsum.photos/seed/road/512/512",
+        message: "He treads a dusty road through rolling hills,\nwhere every step is a pledge to destiny,\nand every breath whispers of untold wonders."
       },
       {
-        image: "https://picsum.photos/seed/luminescence/512/512",
-        message: "Inside, the cavern walls glisten with a mysterious luminescence, hinting at hidden treasures."
+        image: "https://picsum.photos/seed/forest1/512/512",
+        message: "The path winds into an enchanted forest,\nancient trees stand as silent sentinels,\nand the air shimmers with mystic secrets."
       },
       {
-        image: "https://picsum.photos/seed/gem/512/512",
-        message: "After navigating winding passages, his eyes behold a radiant gem of unimaginable beauty."
+        image: "https://picsum.photos/seed/stream/512/512",
+        message: "A bubbling stream mirrors his steady resolve;\nit carries his hopes downstream,\nmerging past lore with future dreams."
+      },
+      {
+        image: "https://picsum.photos/seed/landmark/512/512",
+        message: "At a rocky outcrop, strange symbols glow faintly.\nThey hint at a forgotten legacy—a blockchain of magic\nbinding the realm’s ancient secrets."
+      },
+      {
+        image: "https://picsum.photos/seed/caveentrance/512/512",
+        message: "Beyond the landmark lies a cavern entrance,\ncloaked in ivy and mystery,\nits darkness a gateway to hidden marvels."
+      },
+      {
+        image: "https://picsum.photos/seed/caveinterior/512/512",
+        message: "Inside, the cave awakens with soft luminescence.\nGleaming walls and echoing drips guide his cautious steps,\nand every corner teases a magical surprise."
+      },
+      {
+        image: "https://picsum.photos/seed/runes/512/512",
+        message: "Ancient runes cover the cavern walls,\ntelling tales of old battles and cryptic treasures.\nTheir glowing symbols hint at a digital legacy beyond time."
+      },
+      {
+        image: "https://picsum.photos/seed/guardian/512/512",
+        message: "In a vast hall, spectral guardians arise\nfrom the very fabric of the cave, protecting\nits secrets with an ethereal force."
+      },
+      {
+        image: "https://picsum.photos/seed/puzzle/512/512",
+        message: "Faced with enchanted puzzles and shifting corridors,\nSir Alaric relies on wit and bravery\nto navigate the labyrinth of ancient lore."
+      },
+      {
+        image: "https://picsum.photos/seed/gem1/512/512",
+        message: "Deep within the maze, a glow beckons him forth.\nHe discovers Aether’s Heart—a gem pulsing with celestial fire,\na beacon of hope in the shadowed depths."
+      },
+      {
+        image: "https://picsum.photos/seed/gem2/512/512",
+        message: "Further along, a radiant light reveals the Celestial Sapphire,\nits cool shimmer reflecting the endless night sky,\nwhispering of secrets long forgotten."
+      },
+      {
+        image: "https://picsum.photos/seed/gem3/512/512",
+        message: "In a secret chamber, the Phoenix Tear burns bright,\na gem of rebirth and eternal flame,\ntransforming darkness into radiant promise."
+      },
+      {
+        image: "https://picsum.photos/seed/gem4/512/512",
+        message: "Among other cryptic treasures, each gem tells its tale:\nfragments of a blockchain legacy intertwining magic\nwith the lore of the ancient realm."
+      },
+      {
+        image: "https://picsum.photos/seed/emergence/512/512",
+        message: "Having claimed the enchanted tokens,\nSir Alaric retraces his steps through the winding cave,\nhis spirit emboldened by newfound power."
       },
       {
         image: "https://picsum.photos/seed/victory/512/512",
-        message: "Victorious, he emerges into the light, forever changed by his discovery and the secrets of the cave."
+        message: "At last, he emerges into the golden light of day.\nThe journey back is filled with hope and triumph,\nheralding a new age born from cryptic magic."
       }
     ];
 
