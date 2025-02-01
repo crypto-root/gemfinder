@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Medieval Adventure</title>
+  <!-- Import the 8-bit style font for all text -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #121212;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Full-screen forest background */
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://picsum.photos/seed/forest/1920/1080') no-repeat center center;
+      background-size: cover;
+      opacity: 0.3;
+      z-index: -1;
+    }
+    /* Container with an earthy gradient background and rounded edges */
+    .panel {
+      background: linear-gradient(135deg, #f8f1e5, #e0d6c3);
+      width: 320px;
+      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      transition: opacity 0.5s ease-in-out;
+    }
+    /* Adventure title styling (remains constant) */
+    .title {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 1rem;
+      color: #DAA520; /* Earthy/gold tone */
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    /* Content styling (using the 8-bit font as in your iteration) */
+    .content {
+      text-align: center;
+      width: 100%;
+      transition: opacity 0.5s ease-in-out;
+      font-family: 'Press Start 2P', cursive;
+    }
+    .content img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .content p {
+      margin-top: 20px;
+      font-size: 0.5rem; /* Reduced font size to half */
+      line-height: 1.5;
+      text-align: center;
+    }
+    /* Hint styling */
+    .hint {
+      position: absolute;
+      bottom: 10px;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.8rem;
+      color: #555;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <!-- Forest background -->
+  <div id="background"></div>
+
+  <!-- Main container -->
+  <div class="panel" id="panel">
+    <!-- Adventure title (stays unchanged) -->
+    <div class="title">Medieval Quest</div>
+    <!-- Changing content (image and narrative text) -->
+    <div class="content" id="content">
+      <img id="scene-img" src="https://picsum.photos/seed/adventurer/300/500" alt="Medieval Adventurer">
+      <p id="scene-msg">A brave adventurer sets out on his quest, guided by legends of untold riches.</p>
+    </div>
+    <!-- Click hint -->
+    <div class="hint">Click to continue</div>
+  </div>
+
+  <script>
+    // Define the scenes for the medieval adventure narrative.
+    const scenes = [
+      {
+        image: "https://picsum.photos/seed/adventurer/300/500",
+        message: "A brave adventurer sets out on his quest, guided by legends of untold riches."
+      },
+      {
+        image: "https://picsum.photos/seed/cave/300/500",
+        message: "Through treacherous woods, he arrives at the foreboding entrance of an ancient cave."
+      },
+      {
+        image: "https://picsum.photos/seed/luminescence/300/500",
+        message: "Inside, the cavern walls glisten with a mysterious luminescence, hinting at hidden treasures."
+      },
+      {
+        image: "https://picsum.photos/seed/gem/300/500",
+        message: "After navigating winding passages, his eyes behold a radiant gem of unimaginable beauty."
+      },
+      {
+        image: "https://picsum.photos/seed/victory/300/500",
+        message: "Victorious, he emerges into the light, forever changed by his discovery and the secrets of the cave."
+      }
+    ];
+
+    let currentScene = 0;
+    const panel = document.getElementById("panel");
+    const sceneImage = document.getElementById("scene-img");
+    const sceneMessage = document.getElementById("scene-msg");
+
+    // Function to trigger the fade-out/fade-in animation and update the scene.
+    function nextScene() {
+      // Fade out the entire panel.
+      panel.style.opacity = 0;
+      // Wait for the fade-out to complete (500ms) before updating.
+      setTimeout(() => {
+        // Advance the scene (looping back to the start when done).
+        currentScene = (currentScene + 1) % scenes.length;
+        sceneImage.src = scenes[currentScene].image;
+        sceneMessage.textContent = scenes[currentScene].message;
+        // Fade the panel back in.
+        panel.style.opacity = 1;
+      }, 500);
+    }
+
+    // Advance the scene on click.
+    panel.addEventListener("click", nextScene);
+  </script>
+</body>
+</html>
