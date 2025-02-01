@@ -30,7 +30,7 @@
       opacity: 0.3;
       z-index: -1;
     }
-    /* Container with an earthy gradient background, rounded edges, and lateral padding */
+    /* Main container with an earthy gradient background, rounded edges, and lateral padding */
     .panel {
       background: linear-gradient(135deg, #f8f1e5, #e0d6c3);
       /* Container width: image width (512px) plus 40px padding on each side */
@@ -42,10 +42,18 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      cursor: pointer;
       position: relative;
       transition: opacity 0.5s ease-in-out;
+    }
+    /* Header container for the banner and title */
+    .header {
+      text-align: center;
+    }
+    .banner img {
+      /* Adjust the banner image size as needed */
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
     }
     /* Adventure title styling (remains constant) */
     .title {
@@ -54,6 +62,14 @@
       color: #DAA520; /* Earthy/gold tone */
       margin-bottom: 20px;
       text-align: center;
+    }
+    /* Main content container to vertically center the image and notes */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
     /* Content styling (using the 8-bit font) */
     .content {
@@ -70,7 +86,7 @@
     }
     .content p {
       margin-top: 20px;
-      font-size: 0.7rem; /* Reduced font size to half for extended narration space */
+      font-size: 1rem; /* Adjusted narration text size */
       line-height: 1.5;
       text-align: center;
     }
@@ -78,6 +94,8 @@
     .hint {
       position: absolute;
       bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
       font-family: 'Press Start 2P', cursive;
       font-size: 0.8rem;
       color: #555;
@@ -91,12 +109,20 @@
 
   <!-- Main container -->
   <div class="panel" id="panel">
-    <!-- Adventure title (stays unchanged) -->
-    <div class="title">Medieval Quest</div>
-    <!-- Changing content (image and narrative text) -->
-    <div class="content" id="content">
-      <img id="scene-img" src="https://picsum.photos/seed/adventurer/512/512" alt="Medieval Adventurer">
-      <p id="scene-msg">A brave adventurer sets out on his quest, guided by legends of untold riches.</p>
+    <!-- Header: Tiny banner above the title -->
+    <div class="header">
+      <div class="banner">
+        <!-- Replace with your banner image URL -->
+        <img src="https://picsum.photos/seed/banner/200/50" alt="Banner">
+      </div>
+      <div class="title">Medieval Quest</div>
+    </div>
+    <!-- Main content container centers the image and adventure notes vertically -->
+    <div class="main-content">
+      <div class="content" id="content">
+        <img id="scene-img" src="https://picsum.photos/seed/adventurer/512/512" alt="Medieval Adventurer">
+        <p id="scene-msg">A brave adventurer sets out on his quest, guided by legends of untold riches.</p>
+      </div>
     </div>
     <!-- Click hint -->
     <div class="hint">Click to continue</div>
